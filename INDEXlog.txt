@@ -56,14 +56,25 @@ body{font-size:16px}input,select,textarea{padding:13px;font-size:16px}
 .qt{font-size:17px;font-weight:600}.qh{font-size:13px;color:hsl(var(--mf));margin:2px 0 10px}.q .qt+*:not(.qh){margin-top:10px}
 .opts{display:flex;flex-wrap:wrap;gap:8px}.opt{display:flex;align-items:center;gap:8px;padding:12px 16px;border:1px solid hsl(var(--bd));border-radius:10px;background:hsl(var(--card));color:hsl(var(--fg));font:600 15px Manrope,sans-serif;cursor:pointer}
 .opt i{width:18px;height:18px;border:2px solid hsl(var(--mf));border-radius:50%}.opt.on{border-color:hsl(var(--acc));background:hsl(var(--acc)/.08)}.opt.on i{border-color:hsl(var(--acc));background:radial-gradient(hsl(var(--acc)) 45%,transparent 50%)}
-</style></head>
+</style>
+</head>
 <body>
-<header class="no-print"><div id="lg"></div><nav class="top" id="nt"></nav><span class="k" id="st" style="margin-left:auto"></span><div class="hdr-r"><button class="btn p" onclick="go('nuevo')">+ Nuevo checklist</button></div><button class="btn" onclick="cfgDlg()" title="Conexión">⚙</button></header>
+<header class="no-print">
+  <div id="lg"></div>
+  <nav class="top" id="nt"></nav>
+  <span class="k" id="st" style="margin-left:auto"></span>
+  <div class="hdr-r"><button class="btn p" onclick="go('nuevo')">+ Nuevo checklist</button></div>
+  <button class="btn" onclick="cfgDlg()" title="Conexión">⚙</button>
+</header>
 <main id="app"></main>
 <div class="tabs no-print" id="tb"></div>
 <dialog id="dlg"></dialog>
+
 <script>
-const OPS=[["Jesus Alberto Ruiz Gonzalez","B DF00192648","2027-06-16"],["Jose Gilberto Vega Mendoza","B DF00205689","2025-07-23"],["Joaquin Fernandez Arroyo","B DF00181823","2029-08-12"],["Juan De Jesus Flores Cantero","B LFD01161098","2028-08-15"],["Gustavo Ovando Bahena","B DF001138196","2028-08-17"],["Alistair Yair Mendoza Medina","B,C DF00233150","2026-12-06"],["Francisco Cruz Hernandez","B LFD 01053423","2027-02-21"],["Juan Carlos Segovia Perez","LFD01204125","2029-05-07"],["Jose Emmanuel Hernandez Contreras","E EDOM026548","2027-07-18"],["Fernando Ruiz Cadena","B DF00155612","2029-07-22"],["Moises Garcia Jimenez","B DF001165446","2027-09-04"],["Alejandro Garcia Nava","B DF00202168","2029-08-28"],["Jose Luis Hernandez Trinidad","B DF00164570","2029-08-28"],["Angel Maldonado Sanchez","B DF001111354","2029-08-27"],["Edgar Guerrero Piedras","B DF00181323","2029-09-12"],["Fernando Mendoza Velazquez","B DF001121822","2029-09-25"],["Arturo Ramirez Jimenez","BDF00131353","2029-11-05"],["Oscar Perez Alvarez","B DF001168611","2030-01-21"],["Javier Villeda Gonzalez","B DF00160519","2030-02-09"],["Roberto Rojas Gonzalez","LFD00017599","2030-02-09"],["Jose Ricardo Tellez Mora","B DF001170803","2028-04-05"],["Cristobal Barron Gomez","B DF001120784","2030-05-25"],["Jorge Luis Romero Tinoco","B DF00147844","2028-04-10"],["Luis Alberto Sanchez Rivera","BDF001143126","2030-07-08"],["Marco Antonio Vargas Juarez","B LFD01073664","2027-04-28"],["Jesus Alberto Gonzalez Espinosa","B DF001152110","2028-07-11"],["Gabriel Naranjo Alonso","B LFD00104207","2030-10-09"]],UNI=[["816","964XN1"],["802","963XN1"],["803","066WU9"],["806","270WP9"],["808","055WN5"],["810","933XP3"],["812","033VS6"],["815","959XN1"],["816","296WM9"],["817","962XN1"],["818","990XR5"],["819","866WT9"],["821","59UC1V"],["822","070XT1"],["835","310XA4"],["836","290XA4"],["837","37UC6A"],["838","92TX3F"],["839","62TX3F"],["840","10UA7M"],["845","40UB7A"],["846","96UB7A"],["848","32UC3H"],["849","45UC3H"],["852","78UD9J"],["853","77UD9J"],["851","84UY2N"]],CAJ=[["800","13BD3L","2017"],["806","21AK3L","2009"],["807","118AP7","2001"],["808","084FF5","2023"],["810","279ER3","2007"],["811","806ES1","2006"],["812","054ES9","2007"],["816","271DG8","2009"],["817","31AX2B","2015"],["819","048AJ5","2005"],["820","414EV1","2008"],["821","384ET5","2009"],["828","MJJ979C","2012"],["829","08AH6W","2000"],["830","92AB1C","2010"],["833","13AR6M","2009"],["834","97BJ4Z","2023"],["835","12AE7C","2012"],["836","43AB2B","2010"],["837","90AX8B","2012"],["839","13AX2B","2016"],["840","86AH4W","2013"],["842","4263ZP","2008"],["843","17AB3Y","2011"],["844","990EX2","2011"],["845","07AV3E","2017"],["846","06AV3E","2017"],["847","30AH7M","2012"],["854","57AJ3Z","2016"],["855","085FF5","2023"],["856","97AN2C","2016"],["858","64BD4E","2020"],["857","96AN2C","2016"],["859","03AS8R","2014"],["860","63BD4E","2018"],["861","23BK3W","2020"],["863","72BP1L","2024"]],LOC=["Aguascalientes", "Guadalajara", "Ixtapaluca", "Iztapalapa", "León", "México", "Puebla", "Querétaro", "Tijuana", "Toluca", "Veracruz"];
+const OPS=[["Jesus Alberto Ruiz Gonzalez","B DF00192648","2027-06-16"],["Jose Gilberto Vega Mendoza","B DF00205689","2025-07-23"],["Joaquin Fernandez Arroyo","B DF00181823","2029-08-12"],["Juan De Jesus Flores Cantero","B LFD01161098","2028-08-15"],["Gustavo Ovando Bahena","B DF001138196","2028-08-17"],["Alistair Yair Mendoza Medina","B,C DF00233150","2026-12-06"],["Francisco Cruz Hernandez","B LFD 01053423","2027-02-21"],["Juan Carlos Segovia Perez","LFD01204125","2029-05-07"],["Jose Emmanuel Hernandez Contreras","E EDOM026548","2027-07-18"],["Fernando Ruiz Cadena","B DF00155612","2029-07-22"],["Moises Garcia Jimenez","B DF001165446","2027-09-04"],["Alejandro Garcia Nava","B DF00202168","2029-08-28"],["Jose Luis Hernandez Trinidad","B DF00164570","2029-08-28"],["Angel Maldonado Sanchez","B DF001111354","2029-08-27"],["Edgar Guerrero Piedras","B DF00181323","2029-09-12"],["Fernando Mendoza Velazquez","B DF001121822","2029-09-25"],["Arturo Ramirez Jimenez","BDF00131353","2029-11-05"],["Oscar Perez Alvarez","B DF001168611","2030-01-21"],["Javier Villeda Gonzalez","B DF00160519","2030-02-09"],["Roberto Rojas Gonzalez","LFD00017599","2030-02-09"],["Jose Ricardo Tellez Mora","B DF001170803","2028-04-05"],["Cristobal Barron Gomez","B DF001120784","2030-05-25"],["Jorge Luis Romero Tinoco","B DF00147844","2028-04-10"],["Luis Alberto Sanchez Rivera","BDF001143126","2030-07-08"],["Marco Antonio Vargas Juarez","B LFD01073664","2027-04-28"],["Jesus Alberto Gonzalez Espinosa","B DF001152110","2028-07-11"],["Gabriel Naranjo Alonso","B LFD00104207","2030-10-09"]];
+const UNI=[["816","964XN1"],["802","963XN1"],["803","066WU9"],["806","270WP9"],["808","055WN5"],["810","933XP3"],["812","033VS6"],["815","959XN1"],["816","296WM9"],["817","962XN1"],["818","990XR5"],["819","866WT9"],["821","59UC1V"],["822","070XT1"],["835","310XA4"],["836","290XA4"],["837","37UC6A"],["838","92TX3F"],["839","62TX3F"],["840","10UA7M"],["845","40UB7A"],["846","96UB7A"],["848","32UC3H"],["849","45UC3H"],["852","78UD9J"],["853","77UD9J"],["851","84UY2N"]];
+const CAJ=[["800","13BD3L","2017"],["806","21AK3L","2009"],["807","118AP7","2001"],["808","084FF5","2023"],["810","279ER3","2007"],["811","806ES1","2006"],["812","054ES9","2007"],["816","271DG8","2009"],["817","31AX2B","2015"],["819","048AJ5","2005"],["820","414EV1","2008"],["821","384ET5","2009"],["828","MJJ979C","2012"],["829","08AH6W","2000"],["830","92AB1C","2010"],["833","13AR6M","2009"],["834","97BJ4Z","2023"],["835","12AE7C","2012"],["836","43AB2B","2010"],["837","90AX8B","2012"],["839","13AX2B","2016"],["840","86AH4W","2013"],["842","4263ZP","2008"],["843","17AB3Y","2011"],["844","990EX2","2011"],["845","07AV3E","2017"],["846","06AV3E","2017"],["847","30AH7M","2012"],["854","57AJ3Z","2016"],["855","085FF5","2023"],["856","97AN2C","2016"],["858","64BD4E","2020"],["857","96AN2C","2016"],["859","03AS8R","2014"],["860","63BD4E","2018"],["861","23BK3W","2020"],["863","72BP1L","2024"]];
+const LOC=["Aguascalientes", "Guadalajara", "Ixtapaluca", "Iztapalapa", "León", "México", "Puebla", "Querétaro", "Tijuana", "Toluca", "Veracruz"];
 const LOGO="https://raw.githubusercontent.com/riveracoordinadores-bit/dashboard-logistica/main/WhatsApp%20Image%202026-11-06%20at%209.35.48%20AM.jpeg";
 const TIPOS={trailer:"Tráiler",torton:"Tortón",camioneta:"Camioneta"},COMB=["vacio","1/4","1/2","3/4","lleno"];
 const $=s=>document.querySelector(s),esc=s=>String(s??"").replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
@@ -99,196 +110,10 @@ const appEl = $("#app"); if(appEl) appEl.innerHTML=({inicio,historial,citas:cita
 if($("#s_ch"))initSig()}
 function monthCount(o){const n=new Date(),m=new Date(n.getFullYear(),n.getMonth()-o,1);return S.chk.filter(c=>{const d=new Date(c.fecha);return d.getMonth()==m.getMonth()&&d.getFullYear()==m.getFullYear()}).length}
 function dayCount(i){const d=new Date();d.setDate(d.getDate()-i);return S.chk.filter(c=>new Date(c.fecha).toDateString()==d.toDateString()).length}
-function row(c){const d=new Date(c.fecha);return `<div class="row" onclick="go('detalle','${c.id}')"><div class="date mono">${d.getDate()}<div class="k" style="font-size:9px">${d.toLocaleDateString("es-MX",{month:"short"})}</div></div><div class="sp"><div><span class="dot ${c.tipo_unidad}"></span><b>${esc(c.operador_nombre)}</b></div><div class="mono" style="font-size:12px">Eco. ${esc(c.economico)} · ${dash(c.placas)} · ${fd(c.fecha)} ${ft(c.fecha)}</div><div class="k">${esc(c.folio)}</div></div><button class="btn d no-print" onclick="event.stopPropagation();del('${c.id}',1)">✕</button></div>`}
+function row(c){const d=new Date(c.fecha);return `<div class="row" onclick="go('detalle','${c.id}')"><div class="date mono">${d.getDate()}<div class="k" style="font-size:9px">${d.toLocaleDateString("es-MX",{month:"short"})}</div></div><div class="sp"><div><span class="dot ${c.tipo_unidad}"></span><b>${esc(c.operador_nombre)}</b></div><div class="mono" style="font-size:12px">Eco. ${esc(c.economico)} ·${dash(c.placas)} · ${fd(c.fecha)}${ft(c.fecha)}</div><div class="k">${esc(c.folio)}</div></div><button class="btn d no-print" onclick="event.stopPropagation();del('${c.id}',1)">✕</button></div>`}
 function inicio(){
 const a=monthCount(0),b=monthCount(1),pct=b?Math.min(a/b,1):a?1:0,C=2*Math.PI*42;
 const bars=[...Array(14)].map((_,i)=>dayCount(13-i)),mx=Math.max(1,...bars),w7=[...Array(7)].map((_,i)=>dayCount(6-i)),m7=Math.max(1,...w7);
 const wk=w7.reduce((x,y)=>x+y,0),op=S.ops.filter(o=>o.activo).length;
 return `<div class="card hero"><div class="k">Panel de control</div><h1>Unidades revisadas</h1>
-<div class="card" style="display:flex;align-items:center;gap:18px;margin-bottom:12px"><svg width="104" height="104" viewBox="0 0 104 104"><circle cx="52" cy="52" r="42" fill="none" stroke="hsl(var(--mut))" stroke-width="10"/><circle cx="52" cy="52" r="42" fill="none" stroke="hsl(var(--acc))" stroke-width="10" stroke-linecap="round" stroke-dasharray="${C}" stroke-dashoffset="${C}" transform="rotate(-90 52 52)"><animate attributeName="stroke-dashoffset" from="${C}" to="${C*(1-pct)}" dur="1s" fill="freeze"/></svg><div><div class="k">Checklists este mes</div><div style="font-size:38px;font-weight:800">${a}</div><div class="mono" style="font-size:12px;color:hsl(var(--mf))">Mes anterior: ${b}</div></div></div>
-<div class="g g2"><div class="card"><div class="k">Operadores</div><div style="font-size:26px;font-weight:800">${S.ops.length}</div><div class="mono" style="font-size:12px">${op} activos · ${S.ops.length-op} bajas</div><svg viewBox="0 0 140 40" width="100%" height="50">${bars.map((v,i)=>`<rect x="${i*10}" y="${40-v/mx*36}" width="7" height="${Math.max(2,v/mx*36)}" rx="2" fill="hsl(var(--acc))"/>`).join("")}</svg></div>
-<div class="card"><div class="k">Checklists · 7 días</div><div style="font-size:26px;font-weight:800">${wk}</div><div class="mono" style="font-size:12px">Hoy ${dayCount(0)} · Semana ${wk}</div><svg viewBox="0 0 140 40" width="100%" height="50"><polyline fill="none" stroke="hsl(var(--acc))" stroke-width="2.5" stroke-linecap="round" stroke-dasharray="400" stroke-dashoffset="400" points="${w7.map((v,i)=>`${i*23+3},${38-v/m7*34}`).join(" ")}"><animate attributeName="stroke-dashoffset" to="0" dur="1.2s" fill="freeze"/></polyline></svg></div></div></div>
-<div style="display:flex;justify-content:space-between;align-items:center;margin:18px 0 8px"><h2 style="margin:0">Actividad reciente</h2><a class="k" style="cursor:pointer" onclick="go('historial')">Ver todo →</a></div>
-${S.chk.slice(0,4).map(row).join("")||`<div class="card k">Aún no hay check-lists. Toca “Nuevo”.</div>`}`}
-function historial(){
-const l=S.chk.filter(c=>(!F.t||c.tipo_unidad==F.t)&&(!F.d||c.fecha.slice(0,10)>=F.d)&&(!F.h||c.fecha.slice(0,10)<=F.h)&&(!F.q||[c.economico,c.placas,c.operador_nombre,c.modelo,c.folio].join(" ").toLowerCase().includes(F.q.toLowerCase())));
-return `<div style="display:flex;justify-content:space-between;align-items:center"><div><div class="k">Archivo</div><h1 style="margin-bottom:4px">Historial</h1></div><button class="btn p" onclick="go('nuevo')">Nuevo</button></div>
-<div class="card g g3" style="margin:10px 0"><label><span class="k">Desde</span><input type="date" value="${F.d}" onchange="F.d=this.value;R()"></label><label><span class="k">Hasta</span><input type="date" value="${F.h}" onchange="F.h=this.value;R()"></label><label><span class="k">Tipo</span><select onchange="F.t=this.value;R()"><option value="">Todos</option>${Object.entries(TIPOS).map(([k,v])=>`<option value="${k}" ${F.t==k?"selected":""}>${v}</option>`).join("")}</select></label></div>
-<input placeholder="Buscar económico, placas, operador, modelo o folio" value="${esc(F.q)}" onchange="F.q=this.value;R()" style="margin-bottom:10px"><div class="k" style="margin-bottom:8px">${l.length} registros</div>
-${l.slice(0,Math.min(MORE,150)).map(row).join("")}${l.length>MORE&&MORE<150?`<button class="btn" onclick="MORE+=30;R()" style="width:100%">Mostrar más</button>`:""}`}
-
-/* MÓDULO DE CITAS Y SEGUIMIENTO */
-function citasApp(){
-const activas = S.citas.filter(c => !c.termino);
-const finalizadas = S.citas.filter(c => c.termino);
-const lista = CTAB === 'activas' ? activas : finalizadas;
-
-return `
-<div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:10px;margin-bottom:14px">
-  <div><div class="k">Logística</div><h1 style="margin-bottom:0">Agenda de Citas</h1></div>
-  <div style="display:flex;gap:8px">
-    <button class="btn p" onclick="openCitaModal()">+ Nueva cita</button>
-    <button class="btn" onclick="corteMensualExcel()">📊 Corte mensual Excel</button>
-  </div>
-</div>
-
-<div style="display:flex;gap:8px;margin-bottom:14px">
-  <button class="btn ${CTAB=='activas'?'p':''}" onclick="CTAB='activas';R()">Activas (${activas.length})</button>
-  <button class="btn ${CTAB=='finalizadas'?'p':''}" onclick="CTAB='finalizadas';R()">Finalizadas (${finalizadas.length})</button>
-</div>
-
-${lista.length === 0 ? `<div class="card k">No hay citas en este apartado.</div>` : ''}
-<div style="display:grid;gap:12px">
-${lista.map(c => `
-  <div class="card" style="border-left:4px solid ${c.termino?'#22c55e':'#3b82f6'}">
-    <div style="display:flex;justify-content:space-between;align-items:flex-start">
-      <div>
-        <div class="mono" style="font-size:12px;color:hsl(var(--mf))">📅 ${esc(c.fechaCita)} · 🕒 ${esc(c.horaCita)}</div>
-        <h3 style="margin:4px 0">${esc(c.cliente)}</h3>
-        <div style="font-size:14px"><b>Operador:</b> ${esc(c.operador)} | <b>Eco:</b> ${esc(c.eco)} | <b>Caja:</b> ${esc(c.caja)}</div>
-      </div>
-      <div>
-        <button class="btn w" onclick="shareWhatsApp('${c.id}')" title="Enviar WhatsApp">💬</button>
-        <button class="btn d" onclick="delCita('${c.id}')" title="Eliminar">✕</button>
-      </div>
-    </div>
-    <div style="margin-top:12px;display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:8px;background:hsl(var(--mut));padding:10px;border-radius:10px">
-      <label><span class="k">Arribo Cliente</span><input type="datetime-local" value="${c.arribo||''}" onchange="updateCitaTime('${c.id}','arribo',this.value)"></label>
-      <label><span class="k">Inicio Descarga</span><input type="datetime-local" value="${c.inicioDescarga||''}" onchange="updateCitaTime('${c.id}','inicioDescarga',this.value)"></label>
-      <label><span class="k">Término Descarga</span><input type="datetime-local" value="${c.termino||''}" onchange="updateCitaTime('${c.id}','termino',this.value)"></label>
-    </div>
-    ${c.arribo && c.termino ? `<div class="mono" style="font-size:11px;margin-top:6px;color:hsl(var(--acc))">⏱️ Tiempo total proceso: ${Math.round((new Date(c.termino)-new Date(c.arribo))/60000)} minutos</div>`:''}
-  </div>
-`).join("")}
-</div>`;
-}
-
-function openCitaModal(){
-$("#dlg").innerHTML=`
-  <h2>Nueva Cita / Servicio</h2>
-  <div style="display:grid;gap:10px">
-    <label><span class="k">Cliente / Destino</span><input id="ci_cli"></label>
-    <label><span class="k">Fecha de Cita</span><input type="date" id="ci_fec" value="${new Date().toISOString().slice(0,10)}"></label>
-    <label><span class="k">Hora</span><input type="time" id="ci_hor" value="09:00"></label>
-    <label><span class="k">Operador</span><select id="ci_op"><option value="">Seleccione operador</option>${S.ops.filter(o=>o.activo).map(o=>`<option>${esc(o.nombre)}</option>`).join("")}</select></label>
-    <label><span class="k">Unidad (Económico)</span><select id="ci_uni"><option value="">Seleccione unidad</option>${S.uni.map(u=>`<option value="${u.eco}">Eco. ${u.eco} (${u.placas})</option>`).join("")}</select></label>
-    <label><span class="k">Caja</span><select id="ci_caj"><option value="">Seleccione caja</option>${S.caj.map(c=>`<option value="${c.eco}">Caja ${c.eco} (${c.placas})</option>`).join("")}</select></label>
-  </div>
-  <div style="display:flex;gap:8px;margin-top:14px">
-    <button class="btn p" onclick="saveNewCita()">Guardar cita</button>
-    <button class="btn" onclick="$('#dlg').close()">Cancelar</button>
-  </div>`;
-$("#dlg").showModal();
-}
-
-function saveNewCita(){
-const cliente = $("#ci_cli").value.trim();
-const fechaCita = $("#ci_fec").value;
-const horaCita = $("#ci_hor").value;
-const operador = $("#ci_op").value;
-const eco = $("#ci_uni").value;
-const caja = $("#ci_caj").value;
-if(!cliente || !fechaCita) return alert("Falta el cliente o fecha");
-S.citas.unshift({ id: 'ci_'+Date.now(), cliente, fechaCita, horaCita, operador, eco, caja, arribo:'', inicioDescarga:'', termino:'' });
-save(); $('#dlg').close(); R();
-}
-
-function updateCitaTime(id, field, val){
-const c = S.citas.find(x => x.id === id);
-if(!c) return;
-c[field] = val;
-if(field === 'termino' && val) {
-  CTAB = 'finalizadas';
-}
-save(); R();
-}
-
-function delCita(id){
-if(!confirm("¿Eliminar esta cita?")) return;
-S.citas = S.citas.filter(x => x.id !== id);
-save(); R();
-}
-
-function shareWhatsApp(id){
-const c = S.citas.find(x => x.id === id);
-if(!c) return;
-const txt = `*CITA / SERVICIO RIVERA TRANSPORTES*%0ACliente: ${c.cliente}%0AFecha: ${c.fechaCita} (${c.horaCita})%0AOp: ${c.operador}%0AEco: ${c.eco}%0ACaja: ${c.caja}`;
-window.open(`https://api.whatsapp.com/send?text=${txt}`, '_blank');
-}
-
-function corteMensualExcel(){
-let csv = "ID,Cliente,Fecha Cita,Hora,Operador,Eco,Caja,Arribo,Inicio Descarga,Termino Descarga\n";
-S.citas.forEach(c => {
-  csv += `"${c.id}","${c.cliente}","${c.fechaCita}","${c.horaCita}","${c.operador}","${c.eco}","${c.caja}","${c.arribo||''}","${c.inicioDescarga||''}","${c.termino||''}"\n`;
-});
-const blob = new Blob([csv], { type: 'text/csv;charset=utf-8;' });
-const url = URL.createObjectURL(blob);
-const a = document.createElement('a');
-a.href = url;
-a.download = `Corte_Citas_Rivera_${new Date().toISOString().slice(0,7)}.csv`;
-a.click();
-}
-
-function cat(k){
-const T={uni:["Unidades","Nueva unidad",[["eco","Económico"],["placas","Placas"],["modelo","Modelo"]]],caj:["Cajas","Nueva caja",[["eco","Económico"],["placas","Placas"],["medidas","Tipo de caja"]]]}[k];
-return `<div class="k">Catálogo</div><h1>${T[0]}</h1><div class="card g g2" style="margin-bottom:12px"><h2 style="grid-column:1/-1;margin:0">${T[1]}</h2>${T[2].map(f=>`<label><span class="k">${f[1]}${f[0]!="modelo"&&f[0]!="medidas"?" *":""}</span><input id="n_${f[0]}"></label>`).join("")}${k=="uni"?`<label><span class="k">Tipo</span><select id="n_tipo">${Object.entries(TIPOS).map(([a,b])=>`<option value="${a}">${b}</option>`).join("")}</select></label>":""}<button class="btn p" onclick="addCat('${k}')">Agregar</button></div>
-${S[k].map((x,i)=>`<div class="row" style="cursor:default${x.activo?"":";opacity:.5"}"><div class="sp"><div class="mono"><b>Eco. ${esc(x.eco)}</b> · ${esc(x.placas)}</div><div class="k">${esc(k=="uni"?(x.modelo||"")+" "+TIPOS[x.tipo]:x.medidas||"—")}</div></div><button class="btn" onclick="S.${k}[${i}].activo=!S.${k}[${i}].activo;save();R()">${x.activo?"Desactivar":"Activar"}</button><button class="btn d" onclick="if(confirm('¿Eliminar?')){S.${k}.splice(${i},1);save();R()}">✕</button></div>`).join("")}`}
-function addCat(k){const g=i=>($("#n_"+i)?.value||"").trim(),o={eco:g("eco"),placas:g("placas").toUpperCase(),activo:true};if(!o.eco||!o.placas)return alert("Económico y placas son obligatorios");if(k=="uni"){o.modelo=g("modelo");o.tipo=g("tipo")}else o.medidas=g("medidas");S[k].unshift(o);save();R()}
-function ops(){return `<div class="k">Catálogo</div><h1>Operadores</h1><div class="card g g2" style="margin-bottom:12px"><h2 style="grid-column:1/-1;margin:0">Nuevo operador</h2><label><span class="k">Nombre *</span><input id="o_n"></label><label><span class="k">Teléfono</span><input id="o_t" type="tel"></label><label><span class="k">Licencia</span><input id="o_l"></label><label><span class="k">Vencimiento</span><input id="o_v" type="date"></label><label style="grid-column:1/-1"><span class="k">Notas</span><textarea id="o_no" rows="2"></textarea></label><button class="btn p" onclick="addOp()">Agregar</button></div>
-${S.ops.map((o,i)=>{const l=lic(o.venc);return `<div class="row" style="cursor:default${o.activo?"":";opacity:.5"}"><div class="sp"><div><b>${esc(o.nombre)}</b></div><div class="mono" style="font-size:12px">${dash(o.licencia)}</div></div><span class="chip ${l.c}">${l.t}</span><button class="btn" onclick="S.ops[${i}].activo=!S.ops[${i}].activo;save();R()">${o.activo?"Baja":"Alta"}</button><button class="btn d" onclick="if(confirm('¿Eliminar operador?')){S.ops.splice(${i},1);save();R()}">✕</button></div>`}).join("")}`}
-function addOp(){const n=$("#o_n").value.trim();if(!n)return alert("El nombre es obligatorio");S.ops.unshift({nombre:n,telefono:$("#o_t").value,licencia:$("#o_l").value,venc:$("#o_v").value,notas:$("#o_no").value,activo:true});save();R()}
-let STEP=1;const NSTEP=5,STT=["Datos de la unidad","Ruta y combustible","Fotografías","Observaciones","Firmas"];
-function form(){
-const E=V=="editar";if(E&&!D.id){D=JSON.parse(JSON.stringify(S.chk.find(c=>c.id==ID)));D.fotos=D.fotos||{f:[],p:[],c:[]};D.fecha=D.fecha.slice(0,16)}
-const l=lic(D.licencia_vencimiento),q=(t,req,h,body)=>`<div class="q"><div class="qt">${t}${req?` <span style="color:hsl(var(--des))">*</span>`:""}</div>${h?`<div class="qh">${h}</div>`:""}${body}</div>`;
-const ch=(k,arr,lab)=>`<div class="opts">${arr.map(x=>`<button type="button" class="opt ${D[k]==x?"on":""}" onclick="rd();D['${k}']='${x}';R()"><i></i>${lab?lab[x]:x}</button>`).join("")}</div>`;
-const loc=(id,k)=>`<div style="display:flex;gap:8px"><select id="${id}"><option value="">Elige una opción</option>${[...new Set([...S.locs,D[k]].filter(Boolean))].map(x=>`<option ${x==D[k]?"selected":""}>${esc(x)}</option>`).join("")}</select><button type="button" class="btn" onclick="addLoc('${id}')">+ Otra</button></div>`;
-const ph=(k,t)=>q(t,0,"Toca para tomar o elegir fotos. Toca una foto para quitarla.",`<input type="file" accept="image/*" multiple onchange="addPh('${k}',this)"><div class="thumbs">${(D.fotos[k]||[]).map((u,i)=>`<img src="${u}" onclick="D.fotos['${k}'].splice(${i},1);R()">`).join("")}</div>`);
-const P={
-1:q("Operador",1,"",`<select id="f_op" onchange="pickOp(this.value)"><option value="">Elige una opción</option>${S.ops.filter(o=>o.activo||o.nombre==D.operador_nombre).map(o=>`<option ${o.nombre==D.operador_nombre?"selected":""}>${esc(o.nombre)}</option>`).join("")}</select>${D.operador_nombre?`<span class="chip ${l.c}" style="margin-top:8px">Licencia: ${l.t}</span>`:""}`)+
-q("Número económico",1,"Elige de la lista o escríbelo. Las placas se llenan solas.",`<input id="f_eco" list="dl_e" value="${esc(D.economico)}" onchange="pickU('economico',this.value)">`)+
-q("Placas",1,"",`<input id="f_pl" list="dl_p" value="${esc(D.placas)}" onchange="pickU('placas',this.value)">`)+
-q("Modelo",0,"",`<input id="f_mo" value="${esc(D.modelo)}">`)+q("Tipo de unidad",1,"",ch("tipo_unidad",Object.keys(TIPOS),TIPOS))+
-q("Fecha y hora",1,"",`<input id="f_fe" type="datetime-local" value="${D.fecha}">`)+`<datalist id="dl_e">${S.uni.map(u=>`<option>${esc(u.eco)}`).join("")}</datalist><datalist id="dl_p">${S.uni.map(u=>`<option>${esc(u.placas)}`).join("")}</datalist>`,
-2:q("Origen",0,"",loc("f_or","origen"))+q("Destino",0,"",loc("f_de","destino"))+q("Kilometraje de salida",0,"",`<input id="f_ks" type="number" inputmode="numeric" value="${D.km_salida??""}">`)+q("Kilometraje de llegada",0,"Puedes dejarlo vacío y llenarlo al regresar (Editar).",`<input id="f_kl" type="number" inputmode="numeric" value="${D.km_llegada??""}">`)+q("Combustible al salir",1,"",ch("combustible_salida",COMB))+q("Combustible al llegar",0,"",ch("combustible_llegada",COMB))+q("Diésel asignado (litros)",0,"",`<input id="f_di" type="number" inputmode="decimal" value="${D.diesel_asignado??""}">`),
-3:ph("f","Foto del frente")+ph("p","Foto de perfil")+ph("c","Perfil de cajas secas y sujeción"),
-4:q("Observaciones",0,"Anota golpes, fallas o cualquier detalle. Si no hay, déjalo vacío.",`<textarea id="f_ob" rows="5">${esc(D.observaciones)}</textarea>`),
-5:q("Nombre de quien chequea",0,"",`<input id="f_ch" value="${esc(D.checador_nombre||"")}">`)+q("Firma de quien chequea",0,"Firma con el dedo dentro del recuadro.",`<canvas class="sig" id="s_ch"></canvas><button type="button" class="btn" onclick="clr('ch')">Borrar firma</button>`)+q("Firma del operador",0,"Firma con el dedo dentro del recuadro.",`<canvas class="sig" id="s_op"></canvas><button type="button" class="btn" onclick="clr('op')">Borrar firma</button>`)};
-return `<div class="fh"><div class="k">Paso ${STEP} de ${NSTEP}</div><h1 style="margin:4px 0 10px">${E?"Editar check-list":"Check-list de unidad"}</h1><div class="pg"><i style="width:${STEP/NSTEP*100}%"></i></div><div class="qt" style="margin-top:12px;color:hsl(var(--pri))">${STT[STEP-1]}</div></div>${P[STEP]}
-<div class="bar no-print"><button class="btn" onclick="rd();if(STEP>1){STEP--;R()}else{D={};go('${E?"detalle":"historial"}','${ID||""}')}">${STEP>1?"Atrás":"Cancelar"}</button>${STEP<NSTEP?`<button class="btn p" onclick="nextS()">Siguiente</button>`:`<button class="btn p" onclick="saveChk(${E})">${E?"Guardar cambios":"Enviar check-list"}</button>`}</div>`}
-function nextS(){rd();if(STEP==1&&(!D.operador_nombre||!D.economico||!D.placas))return alert("Falta: operador, número económico y placas");if(STEP==2&&!D.combustible_salida)return alert("Elige el combustible al salir");STEP++;scrollTo(0,0);R()}
-const rd=()=>{const g=i=>$("#"+i)?.value;const o={operador_nombre:g("f_op"),economico:g("f_eco"),placas:g("f_pl"),modelo:g("f_mo"),fecha:g("f_fe"),origen:g("f_or"),destino:g("f_de"),km_salida:g("f_ks"),km_llegada:g("f_kl"),combustible_salida:g("f_cs"),combustible_llegada:g("f_cl"),diesel_asignado:g("f_di"),observaciones:g("f_ob"),checador_nombre:g("f_ch")};for(const k in o)if(o[k]!==undefined)D[k]=o[k]};
-function pickOp(n){rd();const o=S.ops.find(x=>x.nombre==n);D.licencia_vencimiento=o?.venc||"";R()}
-function pickU(k,v){rd();const u=S.uni.find(x=>x[k=="economico"?"eco":"placas"]==v);if(u){D.economico=u.eco;D.placas=u.placas;D.modelo=u.modelo||D.modelo;D.tipo_unidad=u.tipo}R()}
-function addLoc(id){const v=(prompt("Nueva ubicación")||"").trim();if(!v)return;rd();if(!S.locs.includes(v))S.locs.push(v);D[id=="f_or"?"origen":"destino"]=v;save();R()}
-function addPh(k,inp){rd();[...inp.files].forEach(f=>{const r=new FileReader();r.onload=()=>{const im=new Image();im.onload=()=>{const c=document.createElement("canvas"),s=Math.min(1,640/Math.max(im.width,im.height));c.width=im.width*s;c.height=im.height*s;c.getContext("2d").drawImage(im,0,0,c.width,c.height);D.fotos[k].push(c.toDataURL("image/jpeg",.7));R()};im.src=r.result};r.readAsDataURL(f)})}
-function initSig(){["ch","op"].forEach(k=>{const c=$("#s_"+k),x=c.getContext("2d"),r=c.getBoundingClientRect();c.width=r.width*2;c.height=r.height*2;x.scale(2,2);x.lineWidth=2;x.lineCap="round";x.strokeStyle="#0f1c2e";let d=0;const p=e=>({x:e.clientX-c.getBoundingClientRect().left,y:e.clientY-c.getBoundingClientRect().top});
-c.onpointerdown=e=>{d=1;SIG[k]=1;const q=p(e);x.beginPath();x.moveTo(q.x,q.y);c.setPointerCapture(e.pointerId)};c.onpointermove=e=>{if(!d)return;const q=p(e);x.lineTo(q.x,q.y);x.stroke()};c.onpointerup=()=>d=0;
-const old=D["firma_"+(k=="ch"?"checador":"operador")];if(old&&!SIG[k]){const im=new Image();im.onload=()=>x.drawImage(im,0,0,r.width,r.height);im.src=old}})}
-function clr(k){const c=$("#s_"+k);c.getContext("2d").clearRect(0,0,c.width,c.height);SIG[k]=0;D["firma_"+(k=="ch"?"checador":"operador")]=""}
-async function saveChk(E){rd();if(!D.operador_nombre||!D.economico||!D.placas)return alert("Operador, económico y placas son obligatorios");
-["ch","op"].forEach(k=>{if(SIG[k])D["firma_"+(k=="ch"?"checador":"operador")]=$("#s_"+k).toDataURL("image/png")});
-D.licencia_estado=lic(D.licencia_vencimiento).e||"";D.mod=Date.now();
-const i=E?S.chk.findIndex(c=>c.id==ID):-1;
-if(E){D.id=ID;D.folio=S.chk[i].folio}else{const d=new Date(D.fecha),z=n=>String(n).padStart(2,"0");D.id=Date.now()+"";D.folio=`CC-${d.getFullYear()}${z(d.getMonth()+1)}${z(d.getDate())}-${z(d.getHours())}${z(d.getMinutes())}`}
-if(CFG.u){busy("Guardando en la nube…");try{await api({a:"save",chk:D});D._s=1}catch(e){busy();return alert("No se pudo guardar en la nube ("+e.message+"). Tus datos siguen en el formulario.")}busy()}
-if(E)S.chk[i]=D;else S.chk.unshift(D);S.chk.sort((a,b)=>b.fecha.localeCompare(a.fecha));save();const id=D.id;D={};SIG={};STEP=1;go("detalle",id)}
-async function del(id){if(!confirm("¿Eliminar este check-list? Se borrarán también sus fotos y firmas."))return;if(CFG.u){busy("Eliminando…");try{await api({a:"del",id})}catch(e){busy();return alert("No se pudo eliminar: "+e.message)}busy()}S.chk=S.chk.filter(c=>c.id!=id);save();go("historial")}
-function sheet(c){const L=lic(c.licencia_vencimiento),d=new Date(c.fecha),cell=(k,v)=>`<div class="cell"><span class="k">${k}</span><b>${dash(v)}</b></div>`;
-const gal=(t,a)=>`<div style="margin-top:8px"><div class="k">${t} · ${(a||[]).length}</div>${(a||[]).length?`<div class="gal">${a.map(u=>`<img src="${u}">`).join("")}</div>`:`<div class="k" style="padding:8px 0">Sin foto</div>`}</div>`;
-const fm=Object.assign({f:[],p:[],c:[]},c.fotos);
-return `<div class="sheet" id="sheet"><div style="display:flex;justify-content:space-between;align-items:center;border-bottom:2px solid #1B456F;padding-bottom:8px">${LOGO?`<img src="${LOGO}" style="height:36px">`:`<b>RIVERA TRANSPORTES</b>`}<div style="text-align:right"><div class="k">FOLIO</div><b class="mono">${esc(c.folio)}</b></div></div>
-<h2 style="margin:12px 0 8px">Check-list de unidad</h2>
-<div style="display:grid;grid-template-columns:repeat(3,1fr);gap:8px">${cell("Fecha y hora",fd(c.fecha)+" "+ft(c.fecha))}${cell("Tipo de unidad",TIPOS[c.tipo_unidad]||c.tipo_unidad)}${cell("Económico",c.economico)}${cell("Placas",c.placas)}${cell("Modelo",c.modelo)}${cell("Operador",c.operador_nombre)}</div>
-<div style="margin-top:8px">${cell("Licencia",L.t)}</div>
-<div style="display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin-top:8px">${cell("Origen",c.origen)}${cell("Destino",c.destino)}${cell("Km salida",c.km_salida)}${cell("Km llegada",c.km_llegada)}</div>
-<div style="display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-top:8px">${cell("Combustible salida",c.combustible_salida)}${cell("Combustible llegada",c.combustible_llegada)}${cell("Diésel asignado",c.diesel_asignado?c.diesel_asignado+" L":"—")}</div>
-<div style="margin-top:8px">${cell("Observaciones",c.observaciones)}</div>
-${gal("Fotos del frente",fm.f)}${gal("Fotos de perfil",fm.p)}${gal("Perfil cajas y sujeción",fm.c)}
-<div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:16px"><div class="box"><div class="k">Chequea</div><div style="font-weight:700;margin-top:4px">${dash(c.checador_nombre)}</div>${c.firma_checador?`<img src="${c.firma_checador}" style="height:50px;margin-top:6px;object-fit:contain">`:""}</div><div class="box"><div class="k">Operador</div><div style="font-weight:700;margin-top:4px">${dash(c.operador_nombre)}</div>${c.firma_operador?`<img src="${c.firma_operador}" style="height:50px;margin-top:6px;object-fit:contain">`:""}</div></div></div>`}
-function detalle(){if(LD==ID)return`<div class="loading">Cargando…</div>`;const c=S.chk.find(x=>x.id==ID);if(!c)return`<div class="card k">No encontrado.</div>`;
-return `<div class="no-print" style="display:flex;gap:8px;margin-bottom:12px"><button class="btn" onclick="go('historial')">← Volver</button><button class="btn p" onclick="go('editar','${c.id}')">Editar</button><button class="btn" onclick="window.print()">Imprimir / PDF</button><button class="btn d" onclick="del('${c.id}')">Eliminar</button></div><div class="sheetwrap">${sheet(c)}</div>`}
-window.onload=()=>{if(CFG.u)sync();R()};
-</script>
-</body>
-</html>
+<div class="card" style="display:flex;align-items:center;gap:18px;margin-bottom:12px"><svg width="104" height="104" viewBox="0 0 104 104"><circle cx="52" cy="52" r="
